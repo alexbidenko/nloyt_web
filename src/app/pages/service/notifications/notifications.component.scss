@@ -1,0 +1,15 @@
+button {
+  outline: none;
+}
+th, td {
+  overflow: hidden;
+}
+th.gray-table-cell {
+  background: rgba(196, 196, 196, 0.2);
+}
+td.gray-table-cell {
+  background: rgba(196, 196, 196, 0.1);
+}
+.row-active {
+  background-color: rgba(107, 163, 15, 0.2);
+}

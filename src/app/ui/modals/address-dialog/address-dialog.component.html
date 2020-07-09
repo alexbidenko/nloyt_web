@@ -1,0 +1,38 @@
+<div class="position-relative">
+  <button mat-icon-button class="modal-close" (click)="close()">
+    <img src="/assets/registration/modal_close.svg" alt="">
+  </button>
+
+  <div class="container-fluid address-container">
+    <h3 class="title">{{ 'modal.address.title' | translate }}</h3>
+    <p class="description">{{ 'modal.address.description' | translate }}</p>
+
+    <div class="row px-3" style="margin-bottom: 25px;">
+      <div class="col-auto w-200 pl-0 px-20">
+        <div class="form-input">{{address.country}}</div>
+      </div>
+      <div class="col-auto w-200 px-20">
+        <div class="position-relative">
+          <input class="form-input" placeholder="{{ 'modal.address.state' | translate }}" [(ngModel)]="address.state">
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+      </div>
+      <div class="col-auto w-200 px-20 pr-0">
+        <div class="position-relative">
+          <input class="form-input" placeholder="{{ 'modal.address.city' | translate }}" [(ngModel)]="address.city">
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+      </div>
+    </div>
+    <div class="row px-3" style="margin-bottom: 78px;">
+      <div class="col-auto px-20 pl-0" style="width: 440px; box-sizing: content-box;">
+        <input class="form-input" placeholder="{{ 'modal.address.address_line' | translate }}" [(ngModel)]="address.addressLine">
+      </div>
+      <div class="col-auto w-200 px-20 pr-0">
+        <input class="form-input" placeholder="{{ 'modal.address.zip' | translate }}" [(ngModel)]="address.ZIP">
+      </div>
+    </div>
+
+    <button mat-button class="welcome-button" (click)="close(true)">{{ 'modal.address.submit' | translate }}</button>
+  </div>
+</div>

@@ -1,0 +1,319 @@
+<div class="fake-title-container"></div>
+<div class="title-container">
+  <h1 class="title">{{ 'service.orders.title' | translate  }}</h1>
+</div>
+<div class="row card-row">
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.rejectedByWS" (click)="changeFilter('rejectedByWS')">
+    <h3 class="card-title">{{ 'service.orders.rejected_ws' | translate  }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(4)}}</span>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('rejectedByWS')">
+<!--      <span class="card-bottom-time">K USD</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.cancelledByC" (click)="changeFilter('cancelledByC')">
+    <h3 class="card-title">{{ 'service.orders.canceled_c' | translate  }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(3)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('cancelledByC')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.interruptedByWS" (click)="changeFilter('interruptedByWS')">
+    <h3 class="card-title">{{ 'service.orders.interrupted_ws' | translate  }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(6)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('interruptedByWS')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.interruptedByC" (click)="changeFilter('interruptedByC')">
+    <h3 class="card-title">{{ 'service.orders.interrupted_c' | translate  }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(5)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('interruptedByC')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.receiptApproval" (click)="changeFilter('receiptApproval')">
+    <h3 class="card-title">{{ 'service.orders.receipt' | translate }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(7)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('receiptApproval')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.overdue" (click)="changeFilter('overdue')">
+    <h3 class="card-title">{{ 'service.orders.overdue' | translate }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(10)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('overdue')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.scheduled" (click)="changeFilter('scheduled')">
+    <h3 class="card-title">{{ 'service.orders.scheduled' | translate }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(9)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('scheduled')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+  <div class="col-auto custom-card" matRipple [class.active-card]="activeFilters.done" (click)="changeFilter('done')">
+    <h3 class="card-title">{{ 'service.orders.done' | translate }}</h3>
+
+    <div class="row" style="margin: 0;">
+      <div class="col-12 p-0" style="text-align: center;">
+        <span class="card-number">{{(isCardInCost ? 30 : 1) * getCountOrders(8)}}</span>
+      </div>
+    </div>
+
+    <div class="card-bottom">
+      <img src="/assets/notifications/arrow_more.svg" class="card-bottom-arrow" alt="" (click)="clearFilters('done')">
+<!--      <span class="card-bottom-time" (click)="isCardInCost = !isCardInCost">numbers</span>-->
+    </div>
+  </div>
+
+<!--  <div class="col-auto p-1">-->
+<!--    <img src="/assets/settings.png" alt="" [matMenuTriggerFor]="topCardsMore">-->
+
+<!--    <mat-menu #topCardsMore="matMenu">-->
+<!--      <button mat-menu-item>Show infotiles</button>-->
+<!--      <button mat-menu-item>Hide infotiles</button>-->
+<!--      <button mat-menu-item>Edit infotiles</button>-->
+<!--    </mat-menu>-->
+<!--  </div>-->
+</div>
+
+<div style="padding: 2px 34px;" class="container-fluid">
+  <div class="row">
+  <!--  <button mat-button [matMenuTriggerFor]="viewMenu">-->
+  <!--    View-->
+  <!--    <mat-icon>-->
+  <!--      <img src="/assets/notifications/arrow_more.svg" alt="">-->
+  <!--    </mat-icon>-->
+
+  <!--    <mat-menu #viewMenu="matMenu" class="rounded-0">-->
+  <!--      <button mat-menu-item>About this record</button>-->
+  <!--      <button mat-menu-item [matMenuTriggerFor]="columns">Columns</button>-->
+  <!--    </mat-menu>-->
+
+  <!--    <mat-menu #columns="matMenu" class="rounded-0">-->
+
+  <!--    </mat-menu>-->
+  <!--  </button>-->
+
+    <div class="pr-0 col-auto">
+      <button class="pr-4 button-action" mat-button [matMenuTriggerFor]="actionMenu">
+        {{ 'service.buttons.action' | translate  }}
+        <mat-icon style="position: absolute; top: 8px;">
+          <img src="/assets/notifications/arrow_more.svg" alt="">
+        </mat-icon>
+
+        <mat-menu #actionMenu="matMenu" class="rounded-0">
+          <button mat-menu-item (click)="clearFilters('acceptNow')">{{ 'service.actions.accept_now' | translate  }}</button>
+          <button mat-menu-item (click)="clearFilters('connection')">{{ 'service.orders.menu.connection' | translate  }}</button>
+          <button mat-menu-item (click)="clearFilters('scheduled')">{{ 'service.orders.menu.reschedule' | translate  }}</button>
+          <button mat-menu-item (click)="clearFilters('receiptApproval')">{{ 'service.orders.menu.for_approval' | translate  }}</button>
+          <button mat-menu-item (click)="clearFilters('cancelledByC')">{{ 'service.orders.menu.update_details' | translate  }}</button>
+          <button mat-menu-item (click)="clearFilters('rejectedByWS')">{{ 'service.actions.reject' | translate  }}</button>
+        </mat-menu>
+      </button>
+
+      <button class="pr-4 button-action" mat-button [matMenuTriggerFor]="ordersDate">
+        <span>{{ 'service.orders.orders_date' | translate  }}: </span><span style="color: #0054B9;">{{ 'service.orders.menu.between' | translate  }}</span>
+        <mat-icon style="position: absolute; top: 8px;">
+          <img src="/assets/notifications/arrow_more.svg" alt="">
+        </mat-icon>
+
+        <mat-menu #ordersDate="matMenu" class="rounded-0" style="min-height: initial;">
+    <!--      <button mat-menu-item (click)="typeOrdersDate = 1">Day to date</button>-->
+    <!--      <button mat-menu-item (click)="typeOrdersDate = 2">Week to date</button>-->
+    <!--      <button mat-menu-item (click)="typeOrdersDate = 3">Month to date</button>-->
+    <!--      <button mat-menu-item (click)="typeOrdersDate = 4">Quarter to date</button>-->
+    <!--      <button mat-menu-item (click)="typeOrdersDate = 5">Year to date</button>-->
+          <button mat-menu-item (click)="typeOrdersDate = 6">{{ 'service.orders.menu.between' | translate  }}</button>
+        </mat-menu>
+      </button>
+    </div>
+
+    <div class="col-auto">
+      <mat-form-field class="table-search border-02 row ml-2 pl-2" style="width: 120px; padding-right: 12px; padding-left: 13px; margin-right: 4px;" *ngIf="typeOrdersDate === 6">
+        <input matInput [readonly]="true" [matDatepicker]="picker1" [formControl]="date1"
+               placeholder="mm/dd/yyyy" (click)="date1.setValue(''); picker1.open();">
+        <img src="/assets/notifications/icon_calendar.svg" alt="" matRipple class="calendar-icon" (click)="picker1.open()">
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="table-search border-02 row ml-0 pl-2" style="width: 120px; padding-right: 12px; padding-left: 13px;" *ngIf="typeOrdersDate === 6">
+        <input matInput [readonly]="true" [matDatepicker]="picker2" [formControl]="date2"
+               placeholder="mm/dd/yyyy" (click)="date2.setValue(''); picker2.open();">
+        <img src="/assets/notifications/icon_calendar.svg" alt="" matRipple class="calendar-icon" (click)="picker2.open()">
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="table-search border-02 row ml-4 pl-2">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input matInput class="border-0 outline-0 pl-4" type="text" (keyup)="ordersData.filter = $event.target.value.trim().toLowerCase()">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div style="padding: 2px 34px 22px 34px;">
+  <div class="background-black" [class.active]="isActiveBackground"></div>
+
+  <table mat-table [dataSource]="ordersData" class="w-100 custom-card table-hovered-row">
+    <ng-container matColumnDef="checkbox">
+      <th mat-header-cell *matHeaderCellDef class="pl-0 pt-1 text-center" style="width: 47px;">
+        <div class="checkbox-count" [class.active]="activeOrders.length > 0" (click)="checkAll()">{{activeOrders.length}}</div>
+      </th>
+      <td mat-cell *matCellDef="let element" class="pl-0 pt-2 text-center" style="width: 47px;">
+        <mat-checkbox class="m-1" (change)="onChangeCheckbox($event, element.order.id)"
+                      [ngModel]="activeOrders.indexOf(element.order.id) !== -1"></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="make">
+      <th mat-header-cell *matHeaderCellDef style="width: 110px;">{{ 'service.table.make' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left" style="width: 110px;">{{element.make}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef style="width: 100px;">{{ 'service.table.model' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left table-blue-text" style="width: 100px;">
+        <a [routerLink]="'/service/orders/' + element.order.id + '/request'" (click)="addReadOrder(element.order.id)">{{element.model}}</a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef style="width: 70px;">{{ 'service.table.type' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left" style="width: 70px;">{{element.type}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="modification">
+      <th mat-header-cell *matHeaderCellDef style="width: 130px;">{{ 'service.table.modification' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left" style="width: 130px;">{{element.modification}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef style="width: 47px">{{ 'service.table.year' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left" style="width: 47px">{{element.date * 1000 | date: 'yyyy'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="millage">
+      <th mat-header-cell *matHeaderCellDef style="width: 60px">{{ 'service.table.millage' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left" style="width: 60px">{{element.data ? getMillage(element.data.miliage) : '0'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="warranty">
+      <th mat-header-cell *matHeaderCellDef class="text-center" style="width: 64px">{{ 'service.orders.table.warranty' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-center" style="width: 64px">
+        <img src="/assets/notifications/shell_border.svg" alt="" *ngIf="getIsWarrantyError(element) === 1" style="width: 15px;">
+        <img src="/assets/notifications/shell_full.svg" alt="" *ngIf="getIsWarrantyError(element) === 0" style="width: 15px;">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="service">
+      <th mat-header-cell *matHeaderCellDef class="text-center" style="width: 66px">{{ 'service.orders.table.service' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-center" style="width: 66px">
+        <img src="/assets/notifications/service_alert.svg" alt="" *ngIf="getIsWarrantyError(element) === 2">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edt">
+      <th mat-header-cell *matHeaderCellDef class="text-right" style="width: 70px">EDT</th>
+      <td mat-cell *matCellDef="let element" class="text-right" style="width: 70px">
+        {{getReduce(element.order.services, 'duration')}}m
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="catalog">
+      <th mat-header-cell *matHeaderCellDef class="text-center" style="width: 66px">{{ 'service.orders.table.catalog' | translate  }}</th>
+      <td mat-cell *matCellDef="let element">
+        <img src="/assets/orders/catalog_unknow.png" alt="" style="width: 26px; height: 26px;">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef class="text-right" style="width: 52px">{{ 'service.orders.table.total' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-right table-blue-text" style="width: 52px">
+        {{getReduce(element.order.services, 'price')}}$
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef style="padding-left: 25px; width: 205px;">{{ 'service.orders.table.status' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" style="padding-left: 10px; width: 205px;" class="pb-0">
+        <app-status [order]="element.order" (onLongClick)="onLongClickRow($event)" class="text-left"></app-status>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="files">
+      <th mat-header-cell *matHeaderCellDef>{{ 'service.orders.table.files' | translate  }}</th>
+      <td mat-cell *matCellDef="let element" class="text-left">
+        <a *ngIf="element.order.files && element.order.files.length > 0"
+           matRipple class="download-file" (click)="openFilesModal(element.order.files)">
+          <img src="/assets/service/orders/icon_download.svg" alt="" class="w-100 h-100">
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fake">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [class.row-active]="activeOrders.indexOf(row.order.id) !== -1" [class.row-accept-now]="row.order.id === acceptNowOrderId"
+        [class.d-none]="!getIsShow(row)" [class.unread]="isUnread(row.order.id)"></tr>
+  </table>
+</div>

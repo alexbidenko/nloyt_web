@@ -1,0 +1,40 @@
+.modal-close {
+  cursor: pointer;
+  top: -1px;
+  right: -1px;
+  position: absolute;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+.schedules-container {
+  padding: 19px 41px 0 41px;
+
+  .title {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+    color: #000000;
+    margin-bottom: 26px;
+  }
+
+  .px-5px {
+    padding: 0 5px;
+  }
+
+  .form-input {
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+}
+.welcome-button {
+  display: block;
+  margin-top: 56px;
+  margin-left: auto;
+  width: 200px;
+}

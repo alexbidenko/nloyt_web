@@ -1,0 +1,70 @@
+<a class="welcome-sing" routerLink="/">{{'other.welcome.to_login' | translate}}</a>
+
+<div *ngIf="step === 1" [formGroup]="form">
+  <h1 class="welcome-title">{{'other.welcome.registration.title' | translate}}</h1>
+  <h2 class="welcome-subtitle">{{'other.welcome.registration.subtitle' | translate}}</h2>
+
+  <div style="width: 300px; position: relative;">
+    <input type="text" class="form-input mt-40" placeholder="{{'other.welcome.registration.country' | translate}}" formControlName="country"
+           [class.is-invalid]="form.get('country').invalid && form.get('country').touched" readonly [matMenuTriggerFor]="countryMenu">
+    <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+  </div>
+
+  <mat-menu #countryMenu="matMenu" class="country-dropdown-menu" style="width: 300px;">
+    <div class="form-input">
+      {{form.get('country').value || '|'}}
+      <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+    </div>
+    <ng-container>
+      <button mat-button (click)="form.get('country').setValue('Россия')" class="w-100 text-left">Россия</button>
+      <div class="menu-divider"></div>
+    </ng-container>
+    <ng-container>
+      <button mat-button (click)="form.get('country').setValue('Франция')" class="w-100 text-left">Франция</button>
+      <div class="menu-divider"></div>
+    </ng-container>
+    <ng-container>
+      <button mat-button (click)="form.get('country').setValue('США')" class="w-100 text-left">США</button>
+    </ng-container>
+  </mat-menu>
+
+  <input type="text" class="form-input mt-15" placeholder="{{'other.welcome.registration.first_name' | translate}}" formControlName="firstName"
+         [class.is-invalid]="form.get('firstName').invalid && form.get('firstName').touched">
+
+  <input type="text" class="form-input mt-15" placeholder="{{'other.welcome.registration.last_name' | translate}}" formControlName="lastName"
+         [class.is-invalid]="form.get('lastName').invalid && form.get('lastName').touched">
+
+  <input type="text" class="form-input mt-15" placeholder="{{'other.welcome.registration.email' | translate}}" formControlName="email"
+         [class.is-invalid]="form.get('email').invalid && form.get('email').touched">
+
+  <input type="text" class="form-input mt-15" placeholder="{{'other.welcome.registration.phone' | translate}}" formControlName="phone"
+         [class.is-invalid]="form.get('phone').invalid && form.get('phone').touched">
+
+  <div class="welcome-checkbox-container">
+    <input type="checkbox" class="d-none" id="agree" formControlName="agree">
+    <label class="welcome-checkbox" for="agree">{{'other.welcome.registration.agree' | translate}}</label>
+  </div>
+
+  <button class="welcome-button" mat-button [disabled]="form.invalid || !form.get('agree').value"
+          (click)="sendPhoneCode()">{{'other.welcome.registration.create' | translate}}</button>
+
+  <h4 class="welcome-company" style="margin-top: 83px;">2019 (c) NLOYT Corporation</h4>
+</div>
+<div *ngIf="step === 2">
+  <h1 class="welcome-title">{{'other.welcome.registration.title' | translate}}</h1>
+  <h2 class="welcome-subtitle">{{'other.welcome.registration.subtitle_code' | translate}}</h2>
+
+  <input type="text" class="form-input mt-40 code-input" placeholder="****" [(ngModel)]="verifyCode">
+
+  <button class="welcome-button" mat-button [disabled]="!verifyCode" (click)="singUp()">{{'other.welcome.registration.verify' | translate}}</button>
+
+  <button class="remind-password" (click)="sendPhoneCode()">{{'other.welcome.registration.send_again' | translate}}</button>
+
+  <h4 class="welcome-company" style="margin-top: 345px;">2019 (c) NLOYT Corporation</h4>
+</div>
+<div *ngIf="step === 3">
+  <h1 class="welcome-title" style="color: #6BA30F;">{{'other.welcome.registration.title_created' | translate}}</h1>
+  <h2 class="welcome-subtitle">{{'other.welcome.registration.subtitle_created' | translate}}</h2>
+
+  <h4 class="welcome-company" style="margin-top: 611px;">2019 (c) NLOYT Corporation</h4>
+</div>

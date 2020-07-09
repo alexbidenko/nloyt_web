@@ -1,0 +1,36 @@
+<div class="position-relative">
+  <button mat-icon-button class="modal-close" (click)="close()">
+    <img src="/assets/registration/modal_close.svg" alt="">
+  </button>
+
+  <div class="container-fluid schedules-container">
+    <h3 class="title">{{ 'modal.schedule.title' | translate }}</h3>
+
+    <div class="row px-3">
+      <div class="col-4 px-5px pl-0">
+        <div class="form-input">{{ 'modal.schedule.monday' | translate }}</div>
+        <div class="form-input">{{ 'modal.schedule.tuesday' | translate }}</div>
+        <div class="form-input">{{ 'modal.schedule.wednesday' | translate }}</div>
+        <div class="form-input">{{ 'modal.schedule.thursday' | translate }}</div>
+        <div class="form-input">{{ 'modal.schedule.friday' | translate }}</div>
+        <div class="form-input" style="color: #D93939;">{{ 'modal.schedule.saturday' | translate }}</div>
+        <div class="form-input" style="color: #D93939;">{{ 'modal.schedule.sunday' | translate }}</div>
+      </div>
+      <div class="col-4 px-5px">
+        <div class="position-relative" *ngFor="let day of days" (click)="openPicker('start', day)">
+          <input class="form-input" readonly [ngModel]="timeSchedules.schedules[day].start || ''" placeholder="{{ 'modal.schedule.opening' | translate }}">
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+      </div>
+      <div class="col-4 px-5px pr-0">
+        <div class="position-relative" *ngFor="let day of days" (click)="openPicker('end', day)">
+          <input class="form-input" readonly [ngModel]="timeSchedules.schedules[day].end || ''" placeholder="{{ 'modal.schedule.closing' | translate }}">
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+      </div>
+      <ngx-material-timepicker #timePicker (timeSet)="onSetTime($event)" [format]="getFormat()"></ngx-material-timepicker>
+    </div>
+
+    <button mat-button class="welcome-button" (click)="close(true)">{{ 'modal.schedule.submit' | translate }}</button>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.registration-step-title {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 47px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  padding-top: 29px;
+  padding-left: 40px;
+  margin-bottom: 44px;
+}
+.vertical-step-line {
+  height: calc(100% - 10px);
+  width: 1px;
+  background: #AAAAAA;
+  position: absolute;
+  top: 5px;
+  left: 8px;
+}
+.steps-map-item {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: #AAAAAA;
+  margin-bottom: 29px;
+  padding-left: 40px;
+  position: relative;
+
+  transition: .3s all;
+
+  &:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    left: 1px;
+    top: 1px;
+    border-radius: 15px;
+    background: #F7F7F7;
+    border: 1px solid #AAAAAA;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+
+    transition: .3s all;
+  }
+}
+.active.steps-map-item {
+  font-weight: bold;
+  color: #000000;
+
+  &:before {
+    background: #6BA30F;
+    border: 1px solid #6BA30F;
+  }
+}

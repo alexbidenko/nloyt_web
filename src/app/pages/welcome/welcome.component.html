@@ -1,0 +1,18 @@
+<div class="container-fluid min-h-100">
+  <div class="row min-h-100 position-relative">
+    <div class="col-6 min-h-100 position-relative p-0">
+      <img src="/assets/logo.png" alt="Logo" class="logo">
+      <div class="lang" (click)="changeLang()" matRipple>
+        <img src="/assets/login/lang_en.png" alt="Lang Switch" class="h-100 w-100" *ngIf="currentLang === 'en-US'">
+        <img src="/assets/login/lang_ru.png" alt="Lang Switch" class="h-100 w-100" *ngIf="currentLang === 'ru-RU'">
+      </div>
+
+      <h2 class="title-version">CWS SaaS Cloud v.2.1.3</h2>
+
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="col-6 background-image"></div>
+  </div>
+</div>

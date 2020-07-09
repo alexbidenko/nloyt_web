@@ -1,0 +1,7 @@
+<button mat-flat-button class="outline-0 w-100 mb-4" (click)="changeLang('en-US')">English</button>
+<button mat-flat-button class="outline-0 w-100 mb-4" (click)="changeLang('ru-RU')">Русский</button>
+
+<mat-dialog-actions class="pb-3">
+  <a class="mat-raised-button ml-auto outline-0" style="background-color: #6BA30F; color: white;"
+     (click)="dialogRef.close();">{{ 'service.modal.close' | translate }}</a>
+</mat-dialog-actions>

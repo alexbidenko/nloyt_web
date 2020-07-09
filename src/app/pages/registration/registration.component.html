@@ -1,0 +1,36 @@
+<app-left-bar></app-left-bar>
+
+<div class="container-fluid" id="main-container" style="background: #F7F7F7; min-height: 100%;">
+  <div class="fake-title-container"></div>
+  <div class="title-container">
+    <h1 class="title">{{'registration.shell.main_title' | translate}}</h1>
+  </div>
+
+  <h2 class="registration-step-title" *ngIf="step === 1">{{'registration.shell.titles.step_1' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 2">{{'registration.shell.titles.step_2' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 3">{{'registration.shell.titles.step_3' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 4">{{'registration.shell.titles.step_4' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 5">{{'registration.shell.titles.step_5' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 6">{{'registration.shell.titles.step_6' | translate}}</h2>
+  <h2 class="registration-step-title" *ngIf="step === 7">{{'registration.shell.titles.step_7' | translate}}</h2>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto pr-0" style="width: 321px; padding-left: 40px;">
+        <div class="position-sticky" style="top: 100px;">
+          <div class="vertical-step-line"></div>
+          <p class="steps-map-item" [class.active]="step === 1">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 2">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 3">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 4">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 5">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 6">{{'registration.shell.indicators.step_1' | translate}}</p>
+          <p class="steps-map-item" [class.active]="step === 7">{{'registration.shell.indicators.step_1' | translate}}</p>
+        </div>
+      </div>
+      <div class="col-auto p-0" style="width: calc(100% - 321px);">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

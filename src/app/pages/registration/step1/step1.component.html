@@ -1,0 +1,253 @@
+<form [formGroup]="form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto column">
+        <div class="welcome-checkbox-container mb-20">
+          <input type="checkbox" class="d-none" id="franchiseDealership" formControlName="isOfficialDealer"
+                 [class.is-invalid]="form.get('isOfficialDealer').invalid && form.get('isOfficialDealer').touched">
+          <label class="welcome-checkbox" for="franchiseDealership">{{'registration.step_1.is_franchise_hint' | translate}}</label>
+        </div>
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.service_name_hint' | translate}}" formControlName="serviceName"
+               [class.is-invalid]="form.get('serviceName').invalid && form.get('serviceName').touched">
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.legal_name_hint' | translate}}" formControlName="legalEntityName"
+               [class.is-invalid]="form.get('legalEntityName').invalid && form.get('legalEntityName').touched">
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.legal_number_hint' | translate}}" formControlName="legalEntityNumber"
+               [class.is-invalid]="form.get('legalEntityNumber').invalid && form.get('legalEntityNumber').touched">
+      </div>
+      <div class="col-auto column">
+        <div class="welcome-checkbox-container mb-20">
+          <input type="checkbox" class="d-none" id="isHolding" formControlName="isInHolding"
+                 [class.is-invalid]="form.get('isInHolding').invalid && form.get('isInHolding').touched">
+          <label class="welcome-checkbox" for="isHolding">{{'registration.step_1.is_holding_hint' | translate}}</label>
+        </div>
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.holding_name_hint' | translate}}" formControlName="holdingName"
+               [class.is-invalid]="form.get('holdingName').invalid && form.get('holdingName').touched">
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.holding_site_hint' | translate}}" formControlName="holdingSite"
+               [class.is-invalid]="form.get('holdingSite').invalid && form.get('holdingSite').touched">
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">{{'registration.step_1.add_workshop_details' | translate}}</h3>
+
+  <div class="container-fluid">
+    <div class="row" style="width: 680px;">
+      <div class="col-auto double-column">
+        <div class="position-relative mb-20" (click)="openAddressDialog()">
+          <input type="text" class="form-input" placeholder="{{'registration.step_1.address_hint' | translate}}" formControlName="address" readonly
+                 [class.is-invalid]="form.get('address').invalid && form.get('address').touched || isValidAddress === false">
+          <img src="/assets/registration/open_modal.svg" alt="" class="open-modal-icon">
+        </div>
+      </div>
+      <div class="col-auto column">
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.service_phone_hint' | translate}}" formControlName="servicePhone"
+               [class.is-invalid]="form.get('servicePhone').invalid && form.get('servicePhone').touched">
+
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.service_phone_2_hint' | translate}}" formControlName="servicePhone2">
+      </div>
+      <div class="col-auto column">
+        <input type="text" class="form-input mb-20" placeholder="{{'registration.step_1.service_site_hint' | translate}}" formControlName="serviceSite"
+               [class.is-invalid]="form.get('serviceSite').invalid && form.get('serviceSite').touched">
+
+        <div class="position-relative mb-20" (click)="openTimeDialog()">
+          <input type="text" class="form-input" placeholder="{{'registration.step_1.service_time_hint' | translate}}" formControlName="serviceTime"
+                 [class.is-invalid]="form.get('serviceTime').invalid && form.get('serviceTime').touched" readonly>
+          <img src="/assets/registration/open_modal.svg" alt="" class="open-modal-icon">
+        </div>
+      </div>
+      <div class="col-auto double-column">
+        <textarea class="form-input mb-20 description-textarea" matTextareaAutosize formControlName="description"
+                  [class.is-invalid]="form.get('description').invalid && form.get('description').touched"
+                  placeholder="{{'registration.step_1.description_hint' | translate}}"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">{{'registration.step_1.add_workshop_photos' | translate}}</h3>
+
+  <p class="text-hint">{{'registration.step_1.add_photos_hint' | translate}}</p>
+  <p class="format-and-size">{{'registration.step_1.photos_format' | translate}}</p>
+
+  <div class="container-fluid" style="margin-bottom: 20px;">
+    <div class="row">
+      <div class="col-auto p-0">
+        <p class="photo-title">{{'registration.step_1.photo_title_1' | translate}}</p>
+        <label class="photo-container" matRipple>
+          <span class="empty-photo" *ngIf="requiredPhotos.photo1 == null">
+            <img src="/assets/registration/upload_photo.svg" alt="Upload photo">
+          </span>
+          <span class="photo" *ngIf="requiredPhotos.photo1 != null" [style.backgroundImage]="'url(' + (requiredPhotos.photo1.image || '') + ')'">
+            <span class="change-photo">
+              <span class="hint">{{'registration.step_1.change_photo' | translate}}</span>
+              <button mat-icon-button (click)="deletePhoto($event, 'photo1')">
+                <img src="/assets/registration/delete_photo.svg" alt="Delete photo">
+              </button>
+            </span>
+          </span>
+          <input type="file" class="d-none" name="photo1" accept="image/jpeg,image/png,image/bmp" (change)="addPhoto($event)">
+        </label>
+      </div>
+      <div class="col-auto p-0">
+        <p class="photo-title">{{'registration.step_1.photo_title_2' | translate}}</p>
+        <label class="photo-container" matRipple>
+          <span class="empty-photo" *ngIf="requiredPhotos.photo2 == null">
+            <img src="/assets/registration/upload_photo.svg" alt="Upload photo">
+          </span>
+          <span class="photo" *ngIf="requiredPhotos.photo2 != null" [style.backgroundImage]="'url(' + (requiredPhotos.photo2.image || '') + ')'">
+            <span class="change-photo">
+              <span class="hint">{{'registration.step_1.change_photo' | translate}}</span>
+              <button mat-icon-button (click)="deletePhoto($event, 'photo2')">
+                <img src="/assets/registration/delete_photo.svg" alt="Delete photo">
+              </button>
+            </span>
+          </span>
+          <input type="file" class="d-none" name="photo2" accept="image/jpeg,image/png,image/bmp" (change)="addPhoto($event)">
+        </label>
+      </div>
+      <div class="col-auto p-0">
+        <p class="photo-title">{{'registration.step_1.photo_title_3' | translate}}</p>
+        <label class="photo-container" matRipple>
+          <span class="empty-photo" *ngIf="requiredPhotos.photo3 == null">
+            <img src="/assets/registration/upload_photo.svg" alt="Upload photo">
+          </span>
+          <span class="photo" *ngIf="requiredPhotos.photo3 != null" [style.backgroundImage]="'url(' + (requiredPhotos.photo3.image || '') + ')'">
+            <span class="change-photo">
+              <span class="hint">{{'registration.step_1.change_photo' | translate}}</span>
+              <button mat-icon-button (click)="deletePhoto($event, 'photo3')">
+                <img src="/assets/registration/delete_photo.svg" alt="Delete photo">
+              </button>
+            </span>
+          </span>
+          <input type="file" class="d-none" name="photo3" accept="image/jpeg,image/png,image/bmp" (change)="addPhoto($event)">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 720px;">
+    <div class="photo" *ngFor="let photo of photos; let i = index" [style.backgroundImage]="'url(' + photo.image + ')'">
+      <div class="change-photo">
+        <span class="hint">{{'registration.step_1.change_photo' | translate}}</span>
+        <button mat-icon-button (click)="deletePhoto($event, 'other', i)">
+          <img src="/assets/registration/delete_photo.svg" alt="Delete photo">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="add-more-images" mat-button (click)="addMorePhotos.click()">{{'registration.step_1.add_more_photos' | translate}}</button>
+  <input type="file" class="d-none" name="other" accept="image/jpeg,image/png,image/bmp" #addMorePhotos (change)="addPhoto($event)" multiple>
+
+  <h3 class="section-title">{{'registration.step_1.brands_title' | translate}}</h3>
+
+  <p class="text-hint">{{'registration.step_1.brands_description' | translate}}</p>
+
+  <div class="container-fluid" style="margin-bottom: 26px;">
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-auto p-0" style="margin-right: 30px;">
+        <div style="width: 285px; position: relative;">
+          <input type="text" class="form-input" placeholder="{{'registration.step_1.brands_hint' | translate}}" [matMenuTriggerFor]="brandsMenu" readonly>
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+
+        <mat-menu #brandsMenu="matMenu" class="brands-dropdown-menu" style="width: 285px;">
+          <div class="form-input">
+            |
+            <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+          </div>
+          <ng-container *ngFor="let brand of brands; let i = index">
+            <div class="menu-divider" *ngIf="i !== 0"></div>
+            <button mat-button class="w-100 text-left position-relative" (click)="toggleBrand($event, brand)">
+              <img [src]="baseUrl + 'images/logo/' + brand.logo" alt="" class="dropdown-brand-icon">
+              {{brand.title}}
+              <img *ngIf="checkedBrands.indexOf(brand) > -1" src="/assets/registration/dropdown_checked.svg" alt="" class="dropdown-checked">
+            </button>
+          </ng-container>
+        </mat-menu>
+      </div>
+      <div class="col-auto p-0">
+        <button mat-button class="dropdown-menu-add">{{'registration.step_1.brands_add' | translate}}</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-auto double-column">
+        <div class="registration-chip" *ngFor="let brand of checkedBrands">
+          {{brand.title}}
+          <img src="/assets/registration/chip_delete.svg" alt="Close" class="chip-close-icon" (click)="toggleBrand($event, brand)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">{{'registration.step_1.equipment_title' | translate}}</h3>
+
+  <p class="text-hint">{{'registration.step_1.equipment_description' | translate}}</p>
+
+  <div class="container-fluid" style="margin-bottom: 26px;">
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-auto p-0" style="margin-right: 30px;">
+        <div style="width: 285px; position: relative;">
+          <input type="text" class="form-input" placeholder="{{'registration.step_1.equipment_hint' | translate}}" [matMenuTriggerFor]="equipmentMenu" readonly>
+          <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+        </div>
+
+        <mat-menu #equipmentMenu="matMenu" class="brands-dropdown-menu" style="width: 285px;">
+          <div class="form-input">
+            |
+            <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="registration-dropdown-arrow"/>
+          </div>
+          <ng-container *ngFor="let equipment of equipments; let i = index">
+            <div class="menu-divider" *ngIf="i !== 0"></div>
+            <button mat-button class="w-100 text-left position-relative" (click)="toggleEquipment($event, equipment)">
+              {{equipment}}
+              <img *ngIf="checkedEquipments.indexOf(equipment) > -1" src="/assets/registration/dropdown_checked.svg" alt="" class="dropdown-checked">
+            </button>
+          </ng-container>
+        </mat-menu>
+      </div>
+      <div class="col-auto p-0">
+        <button mat-button class="dropdown-menu-add">{{'registration.step_1.equipment_add' | translate}}</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-auto double-column">
+        <div class="registration-chip" *ngFor="let equipment of checkedEquipments">
+          {{equipment}}
+          <img src="/assets/registration/chip_delete.svg" alt="Close" class="chip-close-icon" (click)="toggleEquipment($event, equipment)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">{{'registration.step_1.workplace_title' | translate}}</h3>
+
+  <p class="text-hint">{{'registration.step_1.workplace_description' | translate}}</p>
+
+  <div class="form-input devices-amount-input">
+    {{'registration.step_1.workplace_amount' | translate}}
+    <span class="devices-amount">{{form.get('receiversCount').value}}</span>
+    <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="icon more" (click)="changeReceiversCount(1)">
+    <img src="/assets/registration/dropdown_menu_arrow.svg" alt="" class="icon less" (click)="changeReceiversCount(-1)">
+  </div>
+
+  <div class="welcome-checkbox-container" style="margin-bottom: 7px;">
+    <input type="checkbox" class="d-none" id="agreeLicenceTerms" formControlName="agreeWithCloudService">
+    <label class="welcome-checkbox" for="agreeLicenceTerms">{{'registration.step_1.workplace_agree_licence' | translate}}</label>
+  </div>
+
+  <div class="welcome-checkbox-container" style="margin-bottom: 26px;">
+    <input type="checkbox" class="d-none" id="agreeCondition" formControlName="agreeWithNVCD">
+    <label class="welcome-checkbox" for="agreeCondition">{{'registration.step_1.workplace_agree_nvcd' | translate}}</label>
+  </div>
+
+  <button mat-button class="welcome-button" style="margin-left: 340px; margin-bottom: 103px;" (click)="submit()" [disabled]="!(checkValidForm())">
+    {{'registration.step_1.submit' | translate}}
+  </button>
+</form>

@@ -1,0 +1,27 @@
+.site {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  position: absolute;
+  top: 132px;
+  right: 39px;
+}
+.welcome-sing {
+  top: 40px;
+}
+.welcome-title {
+  margin-top: 270px;
+}
+.welcome-button {
+  margin-top: 40px;
+}
+.remind-password {
+  margin-top: 48px;
+}
+.welcome-company {
+  margin-top: 249px;
+}

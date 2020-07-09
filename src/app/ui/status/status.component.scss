@@ -1,0 +1,54 @@
+button {
+  outline: none!important;
+}
+.px-15px {
+  padding: 0 15px;
+}
+@keyframes round-animation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.round-animation {
+  animation: round-animation 1.4s infinite linear;
+}
+.buttons-text {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #333333;
+  height: 38px;
+  line-height: 38px;
+}
+mat-icon {
+  width: 12px;
+}
+.take-now {
+  height: 38px;
+  font-size: 14px;
+  line-height: 38px;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 900;
+  color: #6BA30F;
+  border: 1px solid #6BA30F;
+  box-sizing: border-box;
+  border-radius: 6px;
+
+  transition: all .15s;
+}
+.take-now:hover {
+  color: white;
+  background-color: #6BA30F;
+}
+.status-life__button {
+  background-color: #6BA30F;
+  color: white;
+  margin-left: 15px;
+}

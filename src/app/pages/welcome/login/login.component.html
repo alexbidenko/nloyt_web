@@ -1,0 +1,16 @@
+<span class="site">cws.nloyt.com</span>
+
+<a class="welcome-sing" routerLink="sing-up">{{'other.welcome.registration' | translate}}</a>
+
+<h1 class="welcome-title">{{'other.welcome.title' | translate}}</h1>
+
+<input type="text" class="form-input mt-40" placeholder="{{'other.welcome.email' | translate}}" name="login"
+       [(ngModel)]="email" (keyup.enter)="passwordInput.focus()">
+<input type="password" class="form-input mt-15" placeholder="{{'other.welcome.password' | translate}}" name="password"
+       [(ngModel)]="password" #passwordInput (keyup.enter)="singIn()">
+
+<button class="welcome-button" mat-button (click)="singIn()">{{'other.welcome.sign_in' | translate}}</button>
+
+<a href="" class="remind-password">{{'other.welcome.remind_password' | translate}}</a>
+
+<h4 class="welcome-company">2019 (c) NLOYT Corporation</h4>

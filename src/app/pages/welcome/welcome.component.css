@@ -1,0 +1,45 @@
+.min-h-100 {
+  min-height: 100%;
+  height: fit-content;
+}
+.background-image {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url("/assets/login/background_image.png") no-repeat center / cover;
+}
+.logo {
+  width: 83px;
+  height: 25px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.lang {
+  position: absolute;
+  width: 36px;
+  height: 18px;
+  top: 43px;
+  right: 30px;
+  font-size: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.content-container {
+  padding-left: 270px;
+}
+.title-version {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: 0.01em;
+  color: #AAAAAA;
+  top: 40px;
+  position: absolute;
+  left: 270px;
+}

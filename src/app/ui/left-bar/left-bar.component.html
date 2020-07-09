@@ -1,0 +1,61 @@
+<div id="left-bar" class="container" [class.open]="isOpenLeftBar">
+  <div class="left-bar-container">
+    <div class="row bar-title-container">
+      <div class="col n-symbol">N</div>
+      <div class="col-auto site-title">CWS SaaS Cloud</div>
+    </div>
+
+    <hr class="m-0">
+
+    <ng-content></ng-content>
+
+    <div class="row hide-menu-container" matRipple (click)="toggleBar()">
+      <div class="menu-icon">
+        <img src="/assets/notifications/toggle-active.svg" alt="" style="width: 14px; height: 14px;">
+      </div>
+      <div class="col p-0">
+        <p class="menu-item-text" style="color: #333;">{{ 'service.menu.hide' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="user" class="profile-avatar" [style.backgroundImage]="'url(' + getAvatar('image') + ')'"
+     [matMenuTriggerFor]="profileMenu">{{getAvatar('text')}}</div>
+
+<mat-menu #profileMenu="matMenu" class="w-290">
+  <div *ngIf="user">
+    <div class="profile-container">
+      <div class="avatar" [style.backgroundImage]="'url(' + getAvatar('image') + ')'">{{getAvatar('text')}}</div>
+      <p class="name">{{user.fullName ? user.fullName : user.firstName + ' ' + user.lastName}}</p>
+      <p class="position">{{user.position || 'Администратор'}}</p>
+    </div>
+    <div class="divider"></div>
+    <div class="contact-container">
+      <p class="workshop-title">{{serviceService.service.serviceName}}</p>
+      <p class="workshop-address">{{serviceService.service.serviceAddress}}</p>
+    </div>
+    <div class="divider"></div>
+    <a mat-flat-button class="contact-button" [href]="'mailto:' + user.email" style="margin: 10px 0 0 0;">
+      <img src="/assets/service/bar/email_icon.svg" alt="Email" style="top: 11px;">
+      {{user.email}}
+    </a>
+    <a mat-flat-button class="contact-button" [href]="'tel:' + user.phone" style="margin: 0 0 10px 0;">
+      <img src="/assets/service/bar/phone_icon.svg" alt="Phone" style="top: 7px;">
+      {{user.phone}}
+    </a>
+    <div class="divider"></div>
+    <button mat-flat-button class="contact-button" (click)="logout()" style="margin: 10px 0 25px 0;">
+      <img src="/assets/service/bar/logout.svg" alt="Email" style="top: 8px;">
+      Sign Out
+    </button>
+  </div>
+</mat-menu>
+
+<div class="notification-icon">
+  <img src="/assets/orders/icon_notification.svg" alt="">
+</div>
+
+<div class="lang-icon" (click)="changeLang()">
+  <img src="/assets/notifications/planet.png" alt="">
+</div>

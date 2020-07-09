@@ -1,0 +1,48 @@
+<div class="container-fluid pb-5">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <p class="text-device-info">
+        <b>{{'other.registration.step_3.step' | translate}} 1.</b>
+        {{'other.registration.step_3.step_1' | translate}}
+      </p>
+      <img class="w-100" src="/assets/add_device_1.png" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+      <p class="text-device-info">
+        <b>{{'other.registration.step_3.step' | translate}} 2.</b>
+        {{'other.registration.step_3.step_2' | translate}}
+        <a href="" style="text-decoration: underline;">{{'other.registration.step_3.support' | translate}}</a>
+      </p>
+      <img class="w-100" src="/assets/add_device_2.png" alt="">
+    </div>
+    <div class="col-12 col-md-4">
+      <p class="text-device-info">
+        <b>{{'other.registration.step_3.step' | translate}} 3.</b>
+        {{'other.registration.step_3.step_3' | translate}}
+      </p>
+      <img class="w-100" src="/assets/add_device_3.png" alt="">
+    </div>
+
+    <div class="d-none d-md-block col-2"></div>
+
+    <div class="col-12 col-md-8 pt-5">
+      <p class="text-center text-device-info">
+        <b>{{'other.registration.step_3.step' | translate}} 4.</b>
+        {{'other.registration.step_3.step_4' | translate}}
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="w-100" src="/assets/add_device_4.png" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="border h-100 px-5">
+            <div class="form-group mt-5">
+              <input type="text" class="form-control rounded-0 text-center" placeholder="NVCD-R PIN" id="devicePin">
+            </div>
+            <button class="btn btn-success btn-block rounded-0" (click)="addDevice()">{{'other.registration.step_3.activate' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
